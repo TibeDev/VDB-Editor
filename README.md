@@ -9,7 +9,8 @@ A codepen like website. (Basicly a copy)
 -Reszing windows. (Horizontal atleast)✅ <br>
 -Different editor layouts.❌ <br>
 -Being able to import .html, .css and .js .❌ <br>
--Local saving.❌ <br>
+-Being able to download the files.❌ <br>
+-Auto saving. Something where it saves what you did last time locally.❌ <br>
 -Having some sort of local storage system for images. (Big maybe)❌ <br>
 -Custom theme support. (Big maybe)❌ <br>
 
