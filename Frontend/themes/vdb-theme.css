@@ -1,0 +1,235 @@
+/* =========================
+   VDB THEME (CodeMirror 5)
+   Converted from Zed theme
+   ========================= */
+
+/* Base editor */
+.cm-s-vdb-theme.CodeMirror {
+  background: #121212;
+  color: #bcb9b2;
+  font-family: monospace;
+}
+
+/* Scroll area */
+.cm-s-vdb-theme .CodeMirror-scroll {
+  background: #121212;
+}
+
+/* Gutter */
+.cm-s-vdb-theme .CodeMirror-gutters {
+  background: #121212;
+  border-right: 1px solid #1e1e1e;
+}
+
+.cm-s-vdb-theme .CodeMirror-gutter {
+  background: #121212;
+}
+
+.cm-s-vdb-theme .CodeMirror-linenumber {
+  color: #3a3835;
+}
+
+/* Cursor */
+.cm-s-vdb-theme .CodeMirror-cursor {
+  border-left: 2px solid #fac118;
+}
+
+/* Selection */
+.cm-s-vdb-theme .CodeMirror-selected {
+  background: #fac11830 !important;
+}
+
+.cm-s-vdb-theme .CodeMirror-selection {
+  background: #fac11830;
+}
+
+/* Active line */
+.cm-s-vdb-theme .CodeMirror-activeline-background {
+  background: #181818;
+}
+
+/* Matching brackets */
+.cm-s-vdb-theme .CodeMirror-matchingbracket {
+  color: #fac118 !important;
+  font-weight: bold;
+}
+
+/* =========================
+   SYNTAX HIGHLIGHTING
+   ========================= */
+
+/* Comments */
+.cm-s-vdb-theme .cm-comment {
+  color: #4a4845;
+  font-style: italic;
+}
+
+.cm-s-vdb-theme .cm-comment.cm-def {
+  color: #5a5855;
+}
+
+/* Keywords */
+.cm-s-vdb-theme .cm-keyword {
+  color: #c39301;
+}
+
+/* Strings */
+.cm-s-vdb-theme .cm-string {
+  color: #8a9e6a;
+}
+
+.cm-s-vdb-theme .cm-string-2 {
+  color: #c39301;
+}
+
+/* Numbers / constants */
+.cm-s-vdb-theme .cm-number,
+.cm-s-vdb-theme .cm-atom {
+  color: #fac118;
+}
+
+/* Functions / definitions */
+.cm-s-vdb-theme .cm-def {
+  color: #fac118;
+  font-weight: 600;
+}
+
+/* Variables */
+.cm-s-vdb-theme .cm-variable {
+  color: #bcb9b2;
+}
+
+.cm-s-vdb-theme .cm-variable-2 {
+  color: #bcb9b2;
+}
+
+.cm-s-vdb-theme .cm-variable-3 {
+  color: #c39301;
+}
+
+/* Operators */
+.cm-s-vdb-theme .cm-operator {
+  color: #bcb9b2;
+}
+
+/* Types */
+.cm-s-vdb-theme .cm-type {
+  color: #c39301;
+}
+
+/* Properties */
+.cm-s-vdb-theme .cm-property {
+  color: #bcb9b2;
+}
+
+/* Tags (HTML/XML) */
+.cm-s-vdb-theme .cm-tag {
+  color: #c39301;
+}
+
+/* Attributes */
+.cm-s-vdb-theme .cm-attribute {
+  color: #c39301;
+}
+
+/* Built-ins */
+.cm-s-vdb-theme .cm-builtin {
+  color: #c39301;
+}
+
+/* Meta / preprocessor */
+.cm-s-vdb-theme .cm-meta {
+  color: #c39301;
+}
+
+/* Brackets / punctuation */
+.cm-s-vdb-theme .cm-bracket {
+  color: #8a8780;
+}
+
+.cm-s-vdb-theme .cm-punctuation {
+  color: #6e6b65;
+}
+
+/* =========================
+   HINT / AUTOCOMPLETE
+   ========================= */
+
+.CodeMirror-hints {
+  background: #0c0c0c !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 1px 4px rgba(0, 0, 0, 0.4);
+  padding: 4px 0;
+  font-family: monospace;
+  font-size: 13px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.CodeMirror-hint {
+  color: #fac118 !important;
+  background: #0c0c0c !important;
+  padding: 5px 12px;
+  cursor: pointer;
+  line-height: 1.5;
+  transition: background 80ms;
+}
+
+.CodeMirror-hint:hover {
+  background: #1a1a1a !important;
+  color: #fac118 !important;
+}
+
+.CodeMirror-hint-active {
+  background: #1e1a10 !important;
+  color: #fac118 !important;
+  border-left: 2px solid #fac118;
+  padding-left: 10px;
+}
+
+/* Scrollbar inside popup */
+.CodeMirror-hints::-webkit-scrollbar {
+  width: 4px;
+}
+
+.CodeMirror-hints::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
+
+.CodeMirror-hints::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+
+.CodeMirror-hints::-webkit-scrollbar-thumb:hover {
+  background: #3a3835;
+}
+
+/* =========================
+   SEARCH / SELECTION MATCHES
+   ========================= */
+
+.CodeMirror-searching {
+  background: #fac11830;
+}
+
+/* =========================
+   SCROLLBARS (WebKit)
+   ========================= */
+
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+  background: #121212;
+}
+
+/* =========================
+   SMALL UX POLISH
+   ========================= */
+
+.cm-s-vdb-theme {
+  caret-color: #fac118;
+}

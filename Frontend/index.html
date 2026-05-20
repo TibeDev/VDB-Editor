@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+
+    <!-- CodeMirror core -->
+    <link id="theme-link" rel="stylesheet" href="./themes/vdb-theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+
+    <!-- Modes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <!-- Autocomplete base -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
+
+    <!-- IMPORTANT: correct order -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/xml-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
+
+    <!-- UX improvements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+  </head>
+
+  <body>
+    <div class="horizontal" id="editor-panel">
+      <div class="editor" id="test">
+        <div class="editor-nav">
+          <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i
+          ><span class="editor-name">html</span>
+        </div>
+        <textarea id="editor-html"></textarea>
+      </div>
+
+      <div class="editor-resizer"></div>
+
+      <div class="editor">
+        <div class="editor-nav">
+          <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i
+          ><span class="editor-name">css</span>
+        </div>
+        <textarea id="editor-css"></textarea>
+      </div>
+
+      <div class="editor-resizer"></div>
+
+      <div class="editor">
+        <div class="editor-nav">
+          <i class="editor-icon ti ti-brand-javascript" aria-hidden="true"></i
+          ><span class="editor-name">js</span>
+        </div>
+        <textarea id="editor-js"></textarea>
+      </div>
+    </div>
+
+    <iframe id="output" frameborder="0"></iframe>
+
+    <script src="run.js"></script>
+    <script src="editor.js"></script>
+    <script src="resize.js"></script>
+  </body>
+</html>
