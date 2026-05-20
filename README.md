@@ -1,5 +1,7 @@
 # &lt;/VDB-Editor&gt;
 
+![Cover](./art/cover.png)
+
 A codepen like website. (Basicly a copy)
 
 # &lt;/Features&gt;
