@@ -2,7 +2,7 @@
 
 A codepen like website. (Basicly a copy)
 
-# </Features>
+# &lt;/Features&gt;
 
 -Reszing windows. (Horizontal atleast)✅ <br>
 -Different editor layouts.❌ <br>
