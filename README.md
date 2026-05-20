@@ -14,5 +14,8 @@ A codepen like website. (Basicly a copy)
 -Having some sort of local storage system for images. (Big maybe)❌ <br>
 -Custom theme support. (Big maybe)❌ <br>
 
+# &lt;/Known bugs&gt;
+-For some reason pressing hyprlinks and pressing back arrow you glitch the whole site.
+
 # &lt;/Where can I try it?&gt;
 You can or just run it locally or you can just try it [here](https://tibedev.github.io/VDB-Editor/)
