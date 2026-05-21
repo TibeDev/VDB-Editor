@@ -51,38 +51,45 @@
   </head>
 
   <body>
-    <div class="horizontal" id="editor-panel">
-      <div class="editor" id="test">
-        <div class="editor-nav">
-          <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i
-          ><span class="editor-name">HTML</span>
+    <nav>
+      <div class="nav-panel left"><h1>&lt;/VDB-Editor&gt;</h1></div>
+      <div class="nav-panel right"><select id="layout-dropdown"></select></div>
+    </nav>
+    <div id="container" class="horizontal layout-el">
+      <div class="horizontal layout-el" id="editor-panel">
+        <div class="editor horizontal" id="test">
+          <div class="editor-nav">
+            <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i
+            ><span class="editor-name">HTML</span>
+          </div>
+          <textarea id="editor-html"></textarea>
         </div>
-        <textarea id="editor-html"></textarea>
+
+        <div class="editor-resizer horizontal layout-el"></div>
+
+        <div class="editor horizontal">
+          <div class="editor-nav">
+            <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i
+            ><span class="editor-name">CSS</span>
+          </div>
+          <textarea id="editor-css"></textarea>
+        </div>
+
+        <div class="editor-resizer horizontal layout-el"></div>
+
+        <div class="editor horizontal">
+          <div class="editor-nav">
+            <i class="editor-icon ti ti-brand-javascript" aria-hidden="true"></i
+            ><span class="editor-name">JS</span>
+          </div>
+          <textarea id="editor-js"></textarea>
+        </div>
       </div>
 
-      <div class="editor-resizer"></div>
-
-      <div class="editor">
-        <div class="editor-nav">
-          <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i
-          ><span class="editor-name">CSS</span>
-        </div>
-        <textarea id="editor-css"></textarea>
-      </div>
-
-      <div class="editor-resizer"></div>
-
-      <div class="editor">
-        <div class="editor-nav">
-          <i class="editor-icon ti ti-brand-javascript" aria-hidden="true"></i
-          ><span class="editor-name">JS</span>
-        </div>
-        <textarea id="editor-js"></textarea>
-      </div>
+      <iframe id="output" frameborder="0"></iframe>
     </div>
 
-    <iframe id="output" frameborder="0"></iframe>
-
+    <script src="./src/javascript/layout.js"></script>
     <script src="./src/javascript/run.js"></script>
     <script src="./src/javascript/editor.js"></script>
     <script src="./src/javascript/resize.js"></script>

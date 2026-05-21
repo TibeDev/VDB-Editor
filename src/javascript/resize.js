@@ -1,51 +1,60 @@
 const resizers = document.querySelectorAll(".editor-resizer");
-const editors = document.querySelectorAll(".editor");
 
-let startX = 0;
-let startWidthLeft = 0;
-let startWidthRight = 0;
-let leftEl, rightEl;
+let startPos = 0;
+let startSizePrev = 0;
+let startSizeNext = 0;
+
+let prevEl;
+let nextEl;
+let isVertical = false;
 
 resizers.forEach((resizer) => {
   resizer.addEventListener("mousedown", (e) => {
-    startX = e.clientX;
+    prevEl = resizer.previousElementSibling;
+    nextEl = resizer.nextElementSibling;
 
-    leftEl = resizer.previousElementSibling;
-    rightEl = resizer.nextElementSibling;
+    isVertical = resizer.classList.contains("vertical");
 
-    startWidthLeft = leftEl.getBoundingClientRect().width;
-    startWidthRight = rightEl.getBoundingClientRect().width;
+    startPos = isVertical ? e.clientY : e.clientX;
+
+    const prevRect = prevEl.getBoundingClientRect();
+    const nextRect = nextEl.getBoundingClientRect();
+
+    startSizePrev = isVertical ? prevRect.height : prevRect.width;
+    startSizeNext = isVertical ? nextRect.height : nextRect.width;
 
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
 
-    document.body.style.cursor = "col-resize";
     document.body.style.userSelect = "none";
+    document.body.style.cursor = isVertical ? "row-resize" : "col-resize";
   });
 });
 
 function onMouseMove(e) {
-  const dx = e.clientX - startX;
+  const currentPos = isVertical ? e.clientY : e.clientX;
+  const delta = currentPos - startPos;
 
-  const newLeftWidth = startWidthLeft + dx;
-  const newRightWidth = startWidthRight - dx;
+  const newPrevSize = startSizePrev + delta;
+  const newNextSize = startSizeNext - delta;
 
-  if (newLeftWidth < 100 || newRightWidth < 100) return;
+  if (newPrevSize < 100 || newNextSize < 100) return;
 
-  leftEl.style.flex = `0 0 ${newLeftWidth}px`;
-  rightEl.style.flex = `0 0 ${newRightWidth}px`;
+  const container = prevEl.parentElement;
+
+  const totalSize = isVertical ? container.clientHeight : container.clientWidth;
+
+  const prevPercent = (newPrevSize / totalSize) * 100;
+  const nextPercent = (newNextSize / totalSize) * 100;
+
+  prevEl.style.flex = `0 0 ${prevPercent}%`;
+  nextEl.style.flex = `0 0 ${nextPercent}%`;
 }
 
 function onMouseUp() {
   document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("mouseup", onMouseUp);
 
-  document.body.style.cursor = "";
   document.body.style.userSelect = "";
+  document.body.style.cursor = "";
 }
-
-window.addEventListener("resize", () => {
-  document.querySelectorAll(".editor").forEach((el) => {
-    el.style.flex = "1 1 0";
-  });
-});
