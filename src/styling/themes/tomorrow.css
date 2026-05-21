@@ -1,0 +1,119 @@
+.cm-s-tomorrow {
+  background: #ffffff;
+  color: #4d4d4c;
+}
+
+/* =========================
+   GUTTER
+========================= */
+.cm-s-tomorrow .CodeMirror-gutters {
+  background: #ffffff;
+  border: none;
+  color: #4d4d4c80;
+}
+
+.cm-s-tomorrow .CodeMirror-linenumber {
+  color: #4d4d4c80;
+}
+
+/* =========================
+   CURSOR / SELECTION
+========================= */
+.cm-s-tomorrow .CodeMirror-cursor {
+  border-left: 1px solid #aeafad;
+}
+
+.cm-s-tomorrow .CodeMirror-selected {
+  background: #d6d6d6;
+}
+
+.cm-s-tomorrow .CodeMirror-activeline-background {
+  background: #efefef;
+}
+
+/* =========================
+   BASE TOKENS
+========================= */
+
+/* Comments */
+.cm-s-tomorrow span.cm-comment {
+  color: #8e908c;
+}
+
+/* Variables / identifiers / properties / attributes / regex */
+.cm-s-tomorrow span.cm-variable,
+.cm-s-tomorrow span.cm-variable-2,
+.cm-s-tomorrow span.cm-variable-3,
+.cm-s-tomorrow span.cm-property,
+.cm-s-tomorrow span.cm-attribute,
+.cm-s-tomorrow span.cm-regexp {
+  color: #c82829;
+}
+
+/* Numbers / booleans / null */
+.cm-s-tomorrow span.cm-number,
+.cm-s-tomorrow span.cm-atom {
+  color: #f5871f;
+}
+
+/* Classes / types */
+.cm-s-tomorrow span.cm-type,
+.cm-s-tomorrow span.cm-def {
+  color: #c99e00;
+}
+
+/* Strings */
+.cm-s-tomorrow span.cm-string,
+.cm-s-tomorrow span.cm-string-2 {
+  color: #718c00;
+}
+
+/* Operators */
+.cm-s-tomorrow span.cm-operator {
+  color: #3e999f;
+}
+
+/* Keywords */
+.cm-s-tomorrow span.cm-keyword {
+  color: #8959a8;
+}
+
+/* Functions (approximation in CM5) */
+.cm-s-tomorrow span.cm-def {
+  color: #4271ae;
+}
+
+/* Dereference operator (rare in CM5, fallback) */
+.cm-s-tomorrow span.cm-variable-3 {
+  color: #4d4d4c;
+}
+
+/* =========================
+   HTML / XML SPECIFIC
+========================= */
+
+.cm-s-tomorrow span.cm-tag {
+  color: #c82829;
+}
+
+.cm-s-tomorrow span.cm-bracket {
+  color: #4d4d4c;
+}
+
+/* =========================
+   ERRORS
+========================= */
+
+.cm-s-tomorrow span.cm-error {
+  color: #ffffff;
+  background: #c82829;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.cm-s-tomorrow span.cm-link {
+  color: #4271ae;
+  text-decoration: underline;
+}

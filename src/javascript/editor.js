@@ -1,10 +1,11 @@
-const theme = "vdb-theme";
+let currentTheme = "vdb-theme";
 const fileNameInput = document.getElementById("file-name");
 const saveMenu = document.getElementById("save-menu");
 
 const uploadBtn = document.getElementById("file-upload-btn");
 const uploadInput = document.getElementById("file-upload");
 
+// -------------------- HTML EDITOR --------------------
 const htmlEditor = CodeMirror.fromTextArea(
   document.getElementById("editor-html"),
   {
@@ -12,7 +13,11 @@ const htmlEditor = CodeMirror.fromTextArea(
     lineNumbers: true,
     autoCloseTags: true,
     autoCloseBrackets: true,
-    theme: theme,
+    matchBrackets: true,
+    theme: currentTheme,
+
+    lint: true,
+    gutters: ["CodeMirror-lint-markers"],
 
     extraKeys: {
       "Ctrl-Space": "autocomplete",
@@ -21,6 +26,7 @@ const htmlEditor = CodeMirror.fromTextArea(
   },
 );
 
+// -------------------- CSS EDITOR --------------------
 const cssEditor = CodeMirror.fromTextArea(
   document.getElementById("editor-css"),
   {
@@ -28,7 +34,10 @@ const cssEditor = CodeMirror.fromTextArea(
     lineNumbers: true,
     autoCloseBrackets: true,
     matchBrackets: true,
-    theme: theme,
+    theme: currentTheme,
+
+    lint: true,
+    gutters: ["CodeMirror-lint-markers"],
 
     extraKeys: {
       "Ctrl-Space": "autocomplete",
@@ -37,12 +46,16 @@ const cssEditor = CodeMirror.fromTextArea(
   },
 );
 
+// -------------------- JS EDITOR --------------------
 const jsEditor = CodeMirror.fromTextArea(document.getElementById("editor-js"), {
   mode: "javascript",
   lineNumbers: true,
   autoCloseBrackets: true,
   matchBrackets: true,
-  theme: theme,
+  theme: currentTheme,
+
+  lint: true,
+  gutters: ["CodeMirror-lint-markers"],
 
   extraKeys: {
     "Ctrl-Space": "autocomplete",
@@ -50,9 +63,9 @@ const jsEditor = CodeMirror.fromTextArea(document.getElementById("editor-js"), {
   },
 });
 
-htmlEditor.on("inputRead", function (cm, change) {
+// -------------------- AUTOCOMPLETE --------------------
+htmlEditor.on("inputRead", function (cm) {
   if (cm.state.completionActive) return;
-
   CodeMirror.commands.autocomplete(cm, null, {
     completeSingle: false,
   });
@@ -60,7 +73,6 @@ htmlEditor.on("inputRead", function (cm, change) {
 
 cssEditor.on("inputRead", function (cm) {
   if (cm.state.completionActive) return;
-
   CodeMirror.commands.autocomplete(cm, null, {
     completeSingle: false,
   });
@@ -68,21 +80,23 @@ cssEditor.on("inputRead", function (cm) {
 
 jsEditor.on("inputRead", function (cm) {
   if (cm.state.completionActive) return;
-
   CodeMirror.commands.autocomplete(cm, null, {
     completeSingle: false,
   });
 });
 
+// -------------------- CHANGE EVENTS --------------------
 htmlEditor.on("change", ResetTimer);
 cssEditor.on("change", ResetTimer);
 jsEditor.on("change", ResetTimer);
 
+// -------------------- SAVE MENU --------------------
 function OpenSaveMenu() {
   saveMenu.style.display = "flex";
   EnableOverlay(true);
 }
 
+// -------------------- DOWNLOAD PROJECT --------------------
 async function DownloadProject() {
   const html = htmlEditor.getValue();
   const css = cssEditor.getValue();
@@ -96,10 +110,10 @@ ${css}
 </style>
 </head>
 <body>
-    ${html}
-    <script>
-    ${js}
-    </script>
+${html}
+<script>
+${js}
+</script>
 </body>
 </html>`;
 
@@ -109,7 +123,6 @@ ${css}
   link.href = URL.createObjectURL(blob);
 
   let name = fileNameInput.value.trim() || "index";
-
   link.download = name + ".html";
 
   document.body.appendChild(link);
@@ -117,18 +130,19 @@ ${css}
   document.body.removeChild(link);
 
   URL.revokeObjectURL(link.href);
+
   EnableOverlay(false);
-  console.log(fileNameInput.value);
   fileNameInput.value = "";
+  saveMenu.style.display = "none";
 }
 
+// -------------------- UPLOAD FILE --------------------
 uploadBtn.addEventListener("click", () => {
   uploadInput.click();
 });
 
 uploadInput.addEventListener("change", function (event) {
   const file = event.target.files[0];
-
   if (!file) return;
 
   const reader = new FileReader();
@@ -162,6 +176,7 @@ uploadInput.addEventListener("change", function (event) {
   uploadInput.value = "";
 });
 
+// -------------------- LOCAL STORAGE --------------------
 GetFromLocalStorage();
 
 function GetFromLocalStorage() {
@@ -174,4 +189,22 @@ function SaveToLocalStorage() {
   localStorage.setItem("htmlCode", htmlEditor.getValue());
   localStorage.setItem("cssCode", cssEditor.getValue());
   localStorage.setItem("jsCode", jsEditor.getValue());
+}
+
+// -------------------- WIPE PROJECT --------------------
+function WipeProject() {
+  htmlEditor.setValue("");
+  cssEditor.setValue("");
+  jsEditor.setValue("");
+}
+
+//--------------------- Theme --------------------------
+function SetTheme(theme) {
+  currentTheme = theme;
+
+  themeLink.href = `./src/styling/themes/${theme}.css`;
+
+  htmlEditor.setOption("theme", theme);
+  cssEditor.setOption("theme", theme);
+  jsEditor.setOption("theme", theme);
 }

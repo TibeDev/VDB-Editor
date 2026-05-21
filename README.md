@@ -26,6 +26,7 @@ VDB-Editor is a frontend playground where you can write HTML,CSS and JS side by 
     - JavaScript
 - Live preview system
 - Local auto-saving (Auto saves locally)
+- Syntax error highlighting.
 
 ---
 

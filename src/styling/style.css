@@ -30,8 +30,8 @@ body {
 #close-btn:hover {
   outline: none;
 }
-#save-menu,
-#save-menu .field {
+.overlay-div,
+.overlay-div .field {
   display: flex;
   flex-direction: column;
 }
@@ -41,21 +41,18 @@ body {
 .field input {
   padding: 10px;
 }
-#save-menu {
+.overlay-div {
+  display: none;
   position: relative;
   gap: 1rem;
   padding: 20px;
   color: #fac118;
   background-color: rgb(17, 17, 17);
 }
-#save-menu input {
-  color: #fac118;
-  background-color: rgb(10, 10, 10);
-}
-#save-menu button {
+.overlay-div button {
   padding: 10px;
 }
-#save-menu header {
+.overlay-div header {
   top: 6px;
   right: 20px;
   position: absolute;
@@ -79,6 +76,11 @@ button {
   cursor: pointer;
 }
 
+input {
+  color: #fac118;
+  background-color: rgb(10, 10, 10);
+}
+
 select {
   padding: 8px;
   background-color: rgb(10, 10, 10);
@@ -90,17 +92,10 @@ button {
   background-color: rgb(10, 10, 10);
 }
 button i {
-  font-size: 20px;
   color: #fac118 !important;
 }
-button:hover i {
-  color: #c59811 !important;
-}
-button:has(i) {
-  background-color: transparent;
-}
 select:hover,
-button:not(:has(i)):hover {
+button:hover {
   outline: 1px solid #fac118;
 }
 nav {
@@ -135,7 +130,8 @@ nav h1 {
   justify-content: end;
 }
 
-#download-btn {
+#download-btn,
+#delete-btn {
   aspect-ratio: 1;
   border: none;
 }

@@ -8,33 +8,37 @@
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
 
-    <!-- Theme -->
-    <link
-      id="theme-link"
-      rel="stylesheet"
-      href="./src/styling/themes/vdb-theme.css"
-    />
-
-    <!-- CodeMirror -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"
-    />
-
+    <!-- ================= CODEMIRROR CORE ================= -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
     />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 
-    <!-- Modes -->
+    <!-- ================= MODES ================= -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
-    <!-- Autocomplete -->
+    <!-- ================= LINT CORE ================= -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.js"></script>
+
+    <!-- ================= LINTER ENGINES ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/jshint@2.13.6/dist/jshint.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/csslint/dist/csslint.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmlhint@1.1.4/dist/htmlhint.min.js"></script>
+
+    <!-- ================= LINT PLUGINS ================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/javascript-lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/css-lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/html-lint.min.js"></script>
+
+    <!-- ================= AUTOCOMPLETE ================= -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css"
@@ -46,36 +50,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
 
-    <!-- UX -->
+    <!-- ================= UX ================= -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
   </head>
 
   <body>
     <div id="overlay">
-      <div id="save-menu">
+      <div class="overlay-div" id="save-menu">
         <header>
           <button id="close-btn" onclick="EnableOverlay(false)">
             <i class="editor-icon ti ti-x" aria-hidden="true"></i>
           </button>
         </header>
+
         <div class="field">
-          <label>File Name:</label> <input id="file-name" type="text" />
+          <label>File Name:</label>
+          <input id="file-name" type="text" />
         </div>
+
         <button onclick="DownloadProject()">Download File</button>
       </div>
+
+      <div class="overlay-div" id="prompt">
+        <p id="prompt-question">
+          Are you sure you wanna delete your current project?
+        </p>
+        <div class="field">
+          <button id="accept-btn">Yes</button>
+          <button onclick="HidePrompt()" id="deny-btn">No</button>
+        </div>
+      </div>
     </div>
+
     <nav>
       <div class="nav-panel left">
         <h1>&lt;/VDB-EDITOR&gt;</h1>
       </div>
+
       <div class="nav-panel right">
         <button id="file-upload-btn">
           UPLOAD
           <input id="file-upload" type="file" hidden />
         </button>
+
         <button id="download-btn" onclick="OpenSaveMenu()">DOWNLOAD</button>
-        <select name="" id="layout-dropdown"></select>
+
+        <select id="layout-dropdown"></select>
+        <select id="theme-dropdown"></select>
+
+        <button
+          id="delete-btn"
+          onclick="
+            ShowPrompt(
+              'Are you sure you wanna delete your current project?',
+              WipeProject,
+            )
+          "
+        >
+          <i class="editor-icon ti ti-trash" aria-hidden="true"></i>
+        </button>
       </div>
     </nav>
 
@@ -83,31 +118,25 @@
       <div id="editor-panel" class="vertical layout-el">
         <div id="html-panel" class="editor vertical layout-el">
           <div class="editor-nav" data-size="[100, 0, 0]">
-            <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i>
+            <i class="editor-icon ti ti-brand-html5"></i>
             <span class="editor-name">HTML</span>
           </div>
-
           <textarea id="editor-html"></textarea>
         </div>
 
         <div id="css-panel" class="editor vertical layout-el">
           <div class="editor-nav" data-size="[0, 100, 0]">
-            <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i>
+            <i class="editor-icon ti ti-brand-css3"></i>
             <span class="editor-name">CSS</span>
           </div>
-
           <textarea id="editor-css"></textarea>
         </div>
 
         <div id="js-panel" class="editor vertical layout-el">
           <div class="editor-nav" data-size="[0, 0, 100]">
-            <i
-              class="editor-icon ti ti-brand-javascript"
-              aria-hidden="true"
-            ></i>
+            <i class="editor-icon ti ti-brand-javascript"></i>
             <span class="editor-name">JS</span>
           </div>
-
           <textarea id="editor-js"></textarea>
         </div>
       </div>
@@ -116,9 +145,12 @@
     </div>
 
     <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+
     <script src="./src/javascript/overlay.js"></script>
     <script src="./src/javascript/layout.js"></script>
     <script src="./src/javascript/run.js"></script>
     <script src="./src/javascript/editor.js"></script>
+    <script src="./src/javascript/theme.js"></script>
+    <script src="./src/javascript/prompt.js"></script>
   </body>
 </html>
