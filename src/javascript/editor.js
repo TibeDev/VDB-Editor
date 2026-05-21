@@ -161,3 +161,17 @@ uploadInput.addEventListener("change", function (event) {
   reader.readAsText(file);
   uploadInput.value = "";
 });
+
+GetFromLocalStorage();
+
+function GetFromLocalStorage() {
+  htmlEditor.setValue(localStorage.getItem("htmlCode") || "");
+  cssEditor.setValue(localStorage.getItem("cssCode") || "");
+  jsEditor.setValue(localStorage.getItem("jsCode") || "");
+}
+
+function SaveToLocalStorage() {
+  localStorage.setItem("htmlCode", htmlEditor.getValue());
+  localStorage.setItem("cssCode", cssEditor.getValue());
+  localStorage.setItem("jsCode", jsEditor.getValue());
+}

@@ -16,21 +16,21 @@ VDB-Editor is a frontend playground where you can write HTML,CSS and JS side by 
 
 ### Current Features
 
-- Resizable editor windows  
-- Multiple editor layouts  
-- Hide/show panels  
-- Import `.html` files  
+- Resizable editor windows
+- Multiple editor layouts
+- Hide/show panels
+- Import `.html` files
   - Automatically extracts:
     - HTML
     - CSS
     - JavaScript
 - Live preview system
+- Local auto-saving (Auto saves locally)
 
 ---
 
 ### Planned Features
 
-- Local auto-saving
 - Local image storage system
 - Multi-page projects
 - Custom themes

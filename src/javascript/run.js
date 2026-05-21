@@ -20,4 +20,5 @@ function run() {
   output.open();
   output.write(html + css + js);
   output.close();
+  SaveToLocalStorage();
 }
