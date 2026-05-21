@@ -1,4 +1,9 @@
 const theme = "vdb-theme";
+const fileNameInput = document.getElementById("file-name");
+const saveMenu = document.getElementById("save-menu");
+
+const uploadBtn = document.getElementById("file-upload-btn");
+const uploadInput = document.getElementById("file-upload");
 
 const htmlEditor = CodeMirror.fromTextArea(
   document.getElementById("editor-html"),
@@ -72,3 +77,87 @@ jsEditor.on("inputRead", function (cm) {
 htmlEditor.on("change", ResetTimer);
 cssEditor.on("change", ResetTimer);
 jsEditor.on("change", ResetTimer);
+
+function OpenSaveMenu() {
+  saveMenu.style.display = "flex";
+  EnableOverlay(true);
+}
+
+async function DownloadProject() {
+  const html = htmlEditor.getValue();
+  const css = cssEditor.getValue();
+  const js = jsEditor.getValue();
+
+  const fullHtml = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+${css}
+</style>
+</head>
+<body>
+    ${html}
+    <script>
+    ${js}
+    </script>
+</body>
+</html>`;
+
+  const blob = new Blob([fullHtml], { type: "text/html" });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+
+  let name = fileNameInput.value.trim() || "index";
+
+  link.download = name + ".html";
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(link.href);
+  EnableOverlay(false);
+  console.log(fileNameInput.value);
+  fileNameInput.value = "";
+}
+
+uploadBtn.addEventListener("click", () => {
+  uploadInput.click();
+});
+
+uploadInput.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const content = e.target.result;
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, "text/html");
+
+    const css = [...doc.querySelectorAll("style")]
+      .map((style) => style.textContent.trim())
+      .filter(Boolean)
+      .join("\n\n");
+
+    const js = [...doc.querySelectorAll("script")]
+      .map((script) => script.textContent.trim())
+      .filter(Boolean)
+      .join("\n\n");
+
+    doc.querySelectorAll("style, script").forEach((el) => el.remove());
+
+    const html = doc.body.innerHTML.trim();
+
+    htmlEditor.setValue(html);
+    cssEditor.setValue(css);
+    jsEditor.setValue(js);
+  };
+
+  reader.readAsText(file);
+  uploadInput.value = "";
+});

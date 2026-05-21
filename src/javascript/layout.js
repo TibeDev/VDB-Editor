@@ -17,7 +17,7 @@ let mainSplit;
 layouts.forEach((layout) => {
   layoutDropdown.innerHTML += `
       <option>
-        ${layout.layout}
+        ${layout.layout.toUpperCase()}
       </option>
     `;
 });
@@ -29,6 +29,7 @@ layoutDropdown.addEventListener("change", () => {
 changeLayout(layoutDropdown.value);
 
 function changeLayout(layoutType) {
+  layoutType = layoutType.toLowerCase();
   layoutEls.forEach((element) => {
     layouts.forEach((item) => {
       element.classList.remove(item.layout);

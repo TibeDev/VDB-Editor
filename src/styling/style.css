@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 * {
-  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+  font-family: "JetBrains Mono", monospace !important;
   box-sizing: border-box;
 }
 
@@ -16,10 +16,67 @@ body {
   overflow: hidden;
 }
 
+#overlay {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.355);
+  z-index: 100;
+  backdrop-filter: blur(1px);
+}
+#close-btn:hover {
+  outline: none;
+}
+#save-menu,
+#save-menu .field {
+  display: flex;
+  flex-direction: column;
+}
+.field {
+  gap: 0.4rem;
+}
+.field input {
+  padding: 10px;
+}
+#save-menu {
+  position: relative;
+  gap: 1rem;
+  padding: 20px;
+  color: #fac118;
+  background-color: rgb(17, 17, 17);
+}
+#save-menu input {
+  color: #fac118;
+  background-color: rgb(10, 10, 10);
+}
+#save-menu button {
+  padding: 10px;
+}
+#save-menu header {
+  top: 6px;
+  right: 20px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
 select,
-option {
+option,
+input,
+button {
   border: none;
   outline: none;
+}
+select,
+option,
+button {
+  cursor: pointer;
 }
 
 select {
@@ -28,6 +85,24 @@ select {
   color: #fac118;
 }
 
+button {
+  color: #fac118;
+  background-color: rgb(10, 10, 10);
+}
+button i {
+  font-size: 20px;
+  color: #fac118 !important;
+}
+button:hover i {
+  color: #c59811 !important;
+}
+button:has(i) {
+  background-color: transparent;
+}
+select:hover,
+button:not(:has(i)):hover {
+  outline: 1px solid #fac118;
+}
 nav {
   background-color: rgb(27, 27, 27);
   height: 50px;
@@ -35,32 +110,43 @@ nav {
   align-items: center;
 }
 
-.nav-panel {
-  width: 100%;
-  height: 100%;
+nav h1 {
   display: flex;
   align-items: center;
-  padding: 15px;
-}
-.nav-panel.right {
-  justify-content: end;
-}
-
-nav h1 {
   color: #fac118;
   margin: 0;
   font-size: 20px;
 }
 
-#container {
+.nav-panel {
   width: 100%;
   height: 100%;
-  height: calc(100vh - 50px);
-
   display: flex;
+  align-items: center;
+  padding: 5px;
+}
 
+.nav-panel * {
+  height: 100%;
+}
+
+.nav-panel.right {
+  gap: 0.3rem;
+  justify-content: end;
+}
+
+#download-btn {
+  aspect-ratio: 1;
+  border: none;
+}
+
+#container {
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
   overflow: hidden;
 }
+
 #container.horizontal {
   flex-direction: column;
 }
@@ -74,6 +160,7 @@ nav h1 {
   background-color: rgb(10, 10, 10);
   overflow: hidden;
 }
+
 #editor-panel.horizontal {
   flex-direction: row;
 }
@@ -81,25 +168,29 @@ nav h1 {
   flex-direction: column;
 }
 
-#editor-panel,
 #output {
+  width: 100%;
+  border: none;
+  background-color: white;
   overflow: hidden;
 }
 
 .gutter {
   background-color: #1e1e1e;
 }
+
+.gutter:hover {
+  background-color: #444;
+}
+
 .gutter.vertical {
   width: 20px;
   cursor: col-resize;
 }
+
 .gutter.horizontal {
   height: 20px;
   cursor: row-resize;
-}
-
-.gutter:hover {
-  background-color: #444;
 }
 
 .editor {
@@ -107,7 +198,6 @@ nav h1 {
   flex-direction: column;
   overflow: hidden;
   border-right: 1px solid rgb(20, 20, 20);
-
   min-width: 0;
   min-height: 0;
 }
@@ -138,19 +228,11 @@ nav h1 {
   color: #3a3835;
 }
 
-#output {
-  width: 100%;
-  border: none;
-  background-color: white;
-}
-
 .CodeMirror {
   width: 100%;
   height: 100% !important;
-
   min-width: 0;
   min-height: 0;
-
   font-size: 14px;
 }
 

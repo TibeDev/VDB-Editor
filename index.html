@@ -52,11 +52,29 @@
   </head>
 
   <body>
+    <div id="overlay">
+      <div id="save-menu">
+        <header>
+          <button id="close-btn" onclick="EnableOverlay(false)">
+            <i class="editor-icon ti ti-x" aria-hidden="true"></i>
+          </button>
+        </header>
+        <div class="field">
+          <label>File Name:</label> <input id="file-name" type="text" />
+        </div>
+        <button onclick="DownloadProject()">Download File</button>
+      </div>
+    </div>
     <nav>
       <div class="nav-panel left">
-        <h1>&lt;/VDB-Editor&gt;</h1>
+        <h1>&lt;/VDB-EDITOR&gt;</h1>
       </div>
       <div class="nav-panel right">
+        <button id="file-upload-btn">
+          UPLOAD
+          <input id="file-upload" type="file" hidden />
+        </button>
+        <button id="download-btn" onclick="OpenSaveMenu()">DOWNLOAD</button>
         <select name="" id="layout-dropdown"></select>
       </div>
     </nav>
@@ -98,6 +116,7 @@
     </div>
 
     <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+    <script src="./src/javascript/overlay.js"></script>
     <script src="./src/javascript/layout.js"></script>
     <script src="./src/javascript/run.js"></script>
     <script src="./src/javascript/editor.js"></script>
