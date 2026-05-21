@@ -1,7 +1,7 @@
 const layoutEls = document.querySelectorAll(".layout-el");
 const layoutDropdown = document.getElementById("layout-dropdown");
 
-const layouts = ["vertical", "horizontal"];
+const layouts = ["horizontal", "vertical"];
 
 let editorSplit;
 let mainSplit;
