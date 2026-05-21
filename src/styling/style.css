@@ -69,6 +69,7 @@ nav h1 {
 }
 
 #editor-panel {
+  user-select: none;
   display: flex;
   background-color: rgb(10, 10, 10);
   overflow: hidden;
