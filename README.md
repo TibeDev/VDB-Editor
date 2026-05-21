@@ -1,29 +1,77 @@
-# &lt;/VDB-Editor&gt;
+# `</VDB-Editor>`
 
 ![Cover](./art/cover.png)
 
-A codepen like website. (Basicly a copy)
+> A browser-based code editor inspired by CodePen.
 
-# &lt;/Features&gt;
+---
 
--Reszing windows. (Horizontal atleast)✅ <br>
--Different layouts.✅ <br>
--Being able to hide panels.✅ <br>
--Being able to import .html, .css and .js .❌ <br>
--Being able to download the files (html, css, js).❌ <br>
--Auto saving. Something where it saves what you did last time locally.❌ <br>
--Having some sort of local storage system for images. (Big maybe)❌ <br>
--Being able to have multiple pages. (Big maybe)❌ <br>
--Custom theme support. (Big maybe)❌ <br>
+# `</About>`
 
-# &lt;/Known bugs&gt;
+VDB-Editor is a frontend playground where you can write HTML,CSS and JS side by side.
 
--For some reason pressing hyprlinks and pressing back arrow you glitch the whole site.
+---
 
-# &lt;/Goal with this&gt;
+# `</Features>`
 
-Later on, I want to implement a system for schools. At our school, we use Safe Exam Browser, which includes a platform where students can create websites within the browser and upload their code directly to the teacher. Eventually, I’d like to add a similar system to my project.
+### Current Features
 
-# &lt;/Where can I try it?&gt;
+- Resizable editor windows  
+- Multiple editor layouts  
+- Hide/show panels  
+- Import `.html` files  
+  - Automatically extracts:
+    - HTML
+    - CSS
+    - JavaScript
+- Live preview system
 
-You can or just run it locally or you can just try it [here](https://tibedev.github.io/VDB-Editor/)
+---
+
+### Planned Features
+
+- Local auto-saving
+- Local image storage system
+- Multi-page projects
+- Custom themes
+
+---
+
+# `</Known-Bugs>`
+
+### Navigation Bug
+
+Clicking hyperlinks inside the preview and then using the browser back button can sometimes break the editor state.
+
+---
+
+# `</Future-Vision>`
+
+One of my goals for this project is to create an education-focused version of the platform.
+
+At my school, we currently use **Safe Exam Browser** together with a website where students can write code and upload their work to the teacher. In practice, the system we use feels outdated, inefficient, and is a pain in the ass to use.
+
+I know this is probably not a universal problem different schools use different tools, and some may already have better solutions. But I still believe (hope) that I can maybe help some people with this.
+
+My vision is to build a platform that is:
+
+- Faster and easier to use
+- More modern and intuitive for students
+- Easy to customize for teachers.
+
+It would be amazing to eventually see my own school use this project, and maybe even other schools in the future.
+
+---
+
+# `</Try-It>`
+
+### Online Version
+
+Try it here:  
+https://tibedev.github.io/VDB-Editor/
+
+---
+
+### Run Locally
+
+You can also download the whole project and simply open the index.html to get started.
