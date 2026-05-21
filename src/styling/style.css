@@ -1,57 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
 * {
   font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+  box-sizing: border-box;
 }
-html {
-  margin: 0;
-}
+
+html,
 body {
   margin: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
+
+body {
+  overflow: hidden;
+}
+
+/* NAVBAR */
+
 nav {
   background-color: rgb(27, 27, 27);
   height: 50px;
   display: flex;
   align-items: center;
-  flex-direction: row;
 }
+
 .nav-panel {
-  width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   padding: 15px;
-  box-sizing: border-box;
-}
-.nav-panel.left {
-  justify-content: left;
 }
 .nav-panel.right {
-  justify-content: right;
+  justify-content: end;
 }
+
 nav h1 {
   color: #fac118;
   margin: 0;
-  padding: 0;
+  font-size: 20px;
 }
-select {
-  color: #fac118;
-  background-color: rgb(10, 10, 10);
-  border: none;
-  outline: none;
-}
-option {
-  color: #fac118;
-  background-color: rgb(10, 10, 10);
-  border: none;
-  outline: none;
-}
+
+/* MAIN LAYOUT */
+
 #container {
   width: 100%;
   height: 100%;
+  height: calc(100vh - 50px);
+
   display: flex;
+
+  overflow: hidden;
 }
 #container.horizontal {
   flex-direction: column;
@@ -59,76 +59,93 @@ option {
 #container.vertical {
   flex-direction: row;
 }
-#output {
-  width: 100%;
-  height: 100%;
-  background-color: white;
-}
+
+/* EDITOR PANEL */
+
 #editor-panel {
   display: flex;
-  width: 100%;
-  height: 500px;
   background-color: rgb(10, 10, 10);
   overflow: hidden;
 }
 #editor-panel.horizontal {
-  width: 100%;
-  height: 500px;
   flex-direction: row;
 }
 #editor-panel.vertical {
-  height: 100%;
-  width: 500px;
   flex-direction: column;
 }
-.editor {
-  min-width: 100px;
-  min-height: 100px;
-  box-sizing: border-box;
+
+#editor-panel,
+#output {
   overflow: hidden;
 }
+
+.gutter {
+  background-color: #1e1e1e;
+}
+.gutter.vertical {
+  width: 20px;
+  cursor: col-resize;
+}
+.gutter.horizontal {
+  height: 20px;
+  cursor: row-resize;
+}
+
+.gutter:hover {
+  background-color: #444;
+}
+
+.editor {
+  display: flex;
+  overflow: hidden;
+  border-right: 1px solid rgb(20, 20, 20);
+}
 .editor.horizontal {
-  flex: 1 1 0;
+  flex-direction: row;
 }
 .editor.vertical {
-  flex: 0 1 1;
+  flex-direction: column;
 }
+
+.editor:last-child {
+  border-right: none;
+}
+
+/* EDITOR TOP BAR */
+
 .editor-nav {
   background-color: rgb(10, 10, 10);
   width: 100%;
-  height: 20px;
+  height: 28px;
   display: flex;
   align-items: center;
-  color: #bcb9b2;
-  padding: 3px;
-  gap: 3px;
+  gap: 6px;
+  padding: 0 10px;
   font-size: 12px;
+  color: #bcb9b2;
+  flex-shrink: 0;
 }
+
 .editor-name {
   color: #fac118;
 }
+
 .editor-icon {
-  font-size: 18px;
+  font-size: 16px;
   color: #3a3835;
 }
-.editor-resizer {
-  background-color: rgb(20, 20, 20);
-}
-.editor-resizer.horizontal {
-  cursor: col-resize;
-  width: 0.5rem;
-  height: 100%;
-}
-.editor-resizer.vertical {
-  cursor: row-resize;
+
+/* OUTPUT */
+
+#output {
   width: 100%;
-  height: 0.5rem;
+  border: none;
+  background-color: white;
 }
 
-.editor-resizer:hover {
-  background-color: #444;
-}
+/* CODEMIRROR */
+
 .CodeMirror {
-  font-size: 14px;
   height: 100% !important;
+  font-size: 14px;
 }

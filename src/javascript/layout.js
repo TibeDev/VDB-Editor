@@ -1,31 +1,64 @@
-let layoutEls = document.querySelectorAll(".layout-el");
-const layoutTypes = ["vertical", "horizontal"];
+const layoutEls = document.querySelectorAll(".layout-el");
 const layoutDropdown = document.getElementById("layout-dropdown");
 
-layoutTypes.forEach((type) => {
-  layoutDropdown.innerHTML += `<option>${type}</option>`;
+const layouts = ["vertical", "horizontal"];
+
+let editorSplit;
+let mainSplit;
+
+layouts.forEach((layout) => {
+  layoutDropdown.innerHTML += `
+    <option value="${layout}">
+      ${layout}
+    </option>
+  `;
 });
+
 layoutDropdown.addEventListener("change", () => {
-  ChangeLayout(layoutDropdown.value);
+  changeLayout(layoutDropdown.value);
 });
 
-ChangeLayout(layoutDropdown.value);
+changeLayout(layoutDropdown.value);
 
-function ChangeLayout(layoutType) {
+function changeLayout(layout) {
   layoutEls.forEach((element) => {
-    element.classList.remove(...layoutTypes);
-    element.classList.add(layoutType);
+    layouts.forEach((item) => {
+      element.classList.remove(item);
+    });
+
+    element.classList.add(layout);
   });
 
-  const editors = document.querySelectorAll(".editor");
-  const resizers = document.querySelectorAll(".editor-resizer");
+  if (editorSplit) editorSplit.destroy();
+  if (mainSplit) mainSplit.destroy();
 
-  editors.forEach((editor) => {
-    editor.style.flex = "1 1 0";
-  });
+  if (layout === "vertical") {
+    editorSplit = Split(["#html-panel", "#css-panel", "#js-panel"], {
+      direction: "vertical",
+      sizes: [33, 33, 34],
+      minSize: 100,
+      gutterSize: 8,
+    });
 
-  resizers.forEach((resizer) => {
-    resizer.classList.remove(...layoutTypes);
-    resizer.classList.add(layoutType);
-  });
+    mainSplit = Split(["#editor-panel", "#output"], {
+      direction: "horizontal",
+      sizes: [60, 40],
+      minSize: [150, 100],
+      gutterSize: 8,
+    });
+  } else {
+    editorSplit = Split(["#html-panel", "#css-panel", "#js-panel"], {
+      direction: "horizontal",
+      sizes: [33, 33, 34],
+      minSize: 100,
+      gutterSize: 8,
+    });
+
+    mainSplit = Split(["#editor-panel", "#output"], {
+      direction: "vertical",
+      sizes: [60, 40],
+      minSize: [150, 100],
+      gutterSize: 8,
+    });
+  }
 }

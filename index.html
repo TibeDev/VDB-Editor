@@ -8,12 +8,14 @@
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
 
-    <!-- CodeMirror core -->
+    <!-- Theme -->
     <link
       id="theme-link"
       rel="stylesheet"
       href="./src/styling/themes/vdb-theme.css"
     />
+
+    <!-- CodeMirror -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"
@@ -32,56 +34,62 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
-    <!-- Autocomplete base -->
+    <!-- Autocomplete -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
 
-    <!-- IMPORTANT: correct order -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/xml-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
 
-    <!-- UX improvements -->
+    <!-- UX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
   </head>
 
   <body>
     <nav>
-      <div class="nav-panel left"><h1>&lt;/VDB-Editor&gt;</h1></div>
-      <div class="nav-panel right"><select id="layout-dropdown"></select></div>
+      <div class="nav-panel left">
+        <h1>&lt;/VDB-Editor&gt;</h1>
+      </div>
+      <div class="nav-panel right">
+        <select name="" id="layout-dropdown"></select>
+      </div>
     </nav>
-    <div id="container" class="horizontal layout-el">
-      <div class="horizontal layout-el" id="editor-panel">
-        <div class="editor horizontal" id="test">
+
+    <div id="container" class="vertical layout-el">
+      <div id="editor-panel" class="vertical layout-el">
+        <div id="html-panel" class="editor vertical layout-el">
           <div class="editor-nav">
-            <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i
-            ><span class="editor-name">HTML</span>
+            <i class="editor-icon ti ti-brand-html5" aria-hidden="true"></i>
+            <span class="editor-name">HTML</span>
           </div>
+
           <textarea id="editor-html"></textarea>
         </div>
 
-        <div class="editor-resizer horizontal layout-el"></div>
-
-        <div class="editor horizontal">
+        <div id="css-panel" class="editor vertical layout-el">
           <div class="editor-nav">
-            <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i
-            ><span class="editor-name">CSS</span>
+            <i class="editor-icon ti ti-brand-css3" aria-hidden="true"></i>
+            <span class="editor-name">CSS</span>
           </div>
+
           <textarea id="editor-css"></textarea>
         </div>
 
-        <div class="editor-resizer horizontal layout-el"></div>
-
-        <div class="editor horizontal">
+        <div id="js-panel" class="editor vertical layout-el">
           <div class="editor-nav">
-            <i class="editor-icon ti ti-brand-javascript" aria-hidden="true"></i
-            ><span class="editor-name">JS</span>
+            <i
+              class="editor-icon ti ti-brand-javascript"
+              aria-hidden="true"
+            ></i>
+            <span class="editor-name">JS</span>
           </div>
+
           <textarea id="editor-js"></textarea>
         </div>
       </div>
@@ -89,9 +97,9 @@
       <iframe id="output" frameborder="0"></iframe>
     </div>
 
+    <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
     <script src="./src/javascript/layout.js"></script>
     <script src="./src/javascript/run.js"></script>
     <script src="./src/javascript/editor.js"></script>
-    <script src="./src/javascript/resize.js"></script>
   </body>
 </html>
