@@ -8,10 +8,10 @@ let mainSplit;
 
 layouts.forEach((layout) => {
   layoutDropdown.innerHTML += `
-    <option value="${layout}">
-      ${layout}
-    </option>
-  `;
+      <option value="${layout}">
+        ${layout}
+      </option>
+    `;
 });
 
 layoutDropdown.addEventListener("change", () => {
@@ -36,29 +36,37 @@ function changeLayout(layout) {
     editorSplit = Split(["#html-panel", "#css-panel", "#js-panel"], {
       direction: "vertical",
       sizes: [33, 33, 34],
-      minSize: 100,
+      minSize: 0,
+      snapOffset: 80,
       gutterSize: 8,
     });
-
     mainSplit = Split(["#editor-panel", "#output"], {
       direction: "horizontal",
-      sizes: [60, 40],
-      minSize: [150, 100],
+      sizes: [40, 60],
+      minSize: 0,
+      snapOffset: 40,
       gutterSize: 8,
     });
   } else {
     editorSplit = Split(["#html-panel", "#css-panel", "#js-panel"], {
       direction: "horizontal",
       sizes: [33, 33, 34],
-      minSize: 100,
+      minSize: 0,
+      snapOffset: 80,
       gutterSize: 8,
     });
 
     mainSplit = Split(["#editor-panel", "#output"], {
       direction: "vertical",
-      sizes: [60, 40],
-      minSize: [150, 100],
+      sizes: [40, 60],
+      minSize: 0,
+      snapOffset: 40,
       gutterSize: 8,
     });
   }
+}
+
+function SetEditorSize(navEl) {
+  const editorSize = navEl.dataset.size;
+  editorSplit.setSizes(editorSize);
 }
