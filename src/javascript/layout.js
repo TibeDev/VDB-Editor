@@ -26,7 +26,10 @@ layoutDropdown.addEventListener("change", () => {
   changeLayout(layoutDropdown.value);
 });
 
-changeLayout(layoutDropdown.value);
+const savedIndex = localStorage.getItem("layoutIndex");
+const index = savedIndex == null ? 0 : savedIndex;
+layoutDropdown.selectedIndex = index;
+changeLayout(layouts[index].layout);
 
 function changeLayout(layoutType) {
   layoutType = layoutType.toLowerCase();
@@ -63,6 +66,7 @@ function changeLayout(layoutType) {
     snapOffset: 40,
     gutterSize: 8,
   });
+  localStorage.setItem("layoutIndex", layouts.indexOf(layout));
 }
 
 function SetEditorSize(navEl) {

@@ -60,7 +60,7 @@
     <div id="overlay">
       <div class="overlay-div" id="save-menu">
         <header>
-          <button id="close-btn" onclick="EnableOverlay(false)">
+          <button class="close-btn">
             <i class="editor-icon ti ti-x" aria-hidden="true"></i>
           </button>
         </header>
@@ -79,7 +79,7 @@
         </p>
         <div class="field">
           <button id="accept-btn">Yes</button>
-          <button onclick="HidePrompt()" id="deny-btn">No</button>
+          <button class="close-btn">No</button>
         </div>
       </div>
     </div>
@@ -90,23 +90,25 @@
       </div>
 
       <div class="nav-panel right">
-        <button id="file-upload-btn">
-          UPLOAD
-          <input id="file-upload" type="file" hidden />
-        </button>
-
-        <button id="download-btn" onclick="OpenSaveMenu()">DOWNLOAD</button>
-
         <select id="layout-dropdown"></select>
         <select id="theme-dropdown"></select>
 
+        <button id="file-upload-btn">
+          SELECT FILE
+          <input id="file-upload" type="file" accept=".html" hidden />
+        </button>
+
+        <button id="download-btn" onclick="OpenOverlayDiv('save-menu')">
+          <i class="editor-icon ti ti-file-download" aria-hidden="true"></i>
+        </button>
         <button
           id="delete-btn"
           onclick="
-            ShowPrompt(
+            Prompt(
               'Are you sure you wanna delete your current project?',
               WipeProject,
-            )
+            );
+            OpenOverlayDiv('prompt');
           "
         >
           <i class="editor-icon ti ti-trash" aria-hidden="true"></i>
