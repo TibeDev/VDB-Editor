@@ -13,10 +13,10 @@ themes.forEach((theme) => {
   themeDropdown.innerHTML += `<option>${theme.toUpperCase()}</option>`;
 });
 
-const savedIndex = localStorage.getItem("themeIndex");
-const themeIndex = savedIndex === null ? savedIndex : 0;
+const themeIndex = Number(localStorage.getItem("themeIndex")) || 0;
+
 themeDropdown.selectedIndex = themeIndex;
-SetTheme(themeIndex);
+SetTheme(themes[themeIndex]);
 
 themeDropdown.addEventListener("change", () => {
   SetTheme(themeDropdown.value.toLowerCase());
