@@ -19,52 +19,26 @@
   --fg-button: #3d344d;
   --fg-select: #3d344d;
 
-  --editor-border: #ebd6ff;
   --editor-header-fg: #7209b7;
   --editor-name-fg: #3d344d;
   --editor-icon-color: #ff41b4;
 
   --bg-gutter: #f5ebff;
   --bg-gutter-hover: #f2e5ff;
-  --fg-line-number: #b59cc4;
-  --gutter-border: #ebd6ff;
 
   --text-primary: #3d344d;
-  --text-secondary: #7209b7;
   --text-muted: #b59cc4;
 
   --caret-color: #ff41b4;
   --selection-bg: rgba(255, 65, 180, 0.15);
-  --active-line-bg: #f5ebff;
-  --matching-bracket-color: #c21fff;
 
   --syntax-comment: #a49cb0;
-  --syntax-comment-def: #9287a3;
-
   --syntax-keyword: #c21fff;
   --syntax-string: #00bfa5;
-  --syntax-string-2: #c21fff;
-
   --syntax-number: #ff007f;
-  --syntax-atom: #ff007f;
-
   --syntax-type: #c21fff;
-  --syntax-tag: #c21fff;
-  --syntax-attribute: #c21fff;
-  --syntax-builtin: #c21fff;
-  --syntax-meta: #c21fff;
-
   --syntax-variable: #3d344d;
-  --syntax-variable-2: #3d344d;
-  --syntax-variable-3: #c21fff;
-
   --syntax-property: #3d344d;
-  --syntax-operator: #3d344d;
-
-  --syntax-def: #ff007f;
-  --syntax-bracket: #9d8db3;
-  --syntax-punctuation: #83729c;
-
   --syntax-error: #ff007f;
 
   --hint-bg: #ffffff;

@@ -32,17 +32,3 @@ window.addEventListener("beforeunload", (event) => {
 function SetTheme(theme) {
   themeLinkPage.href = `./src/styling/themes/${theme}/${theme}.css`;
 }
-
-// function SetEditorTheme(theme) {
-//   currentTheme = theme;
-
-//   themeLinkCodeMirror.href = `./src/styling/themes/${theme}/${theme}-codemirror.css`;
-
-//   htmlEditor.setOption("theme", theme);
-//   cssEditor.setOption("theme", theme);
-//   jsEditor.setOption("theme", theme);
-// }
-
-// function SetPageTheme(theme) {
-//   themeLinkPage.href = `./src/styling/themes/${theme}/${theme}-page.css`;
-// }
