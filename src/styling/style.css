@@ -1,63 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 * {
-  font-family: "JetBrains Mono", monospace !important;
-  box-sizing: border-box;
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
 }
 
 html,
 body {
-  margin: 0;
   width: 100%;
   height: 100%;
 }
 
 body {
   overflow: hidden;
-}
-
-#overlay {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.355);
-  z-index: 100;
-  backdrop-filter: blur(1px);
-}
-.overlay-div,
-.overlay-div .field {
-  display: flex;
-  flex-direction: column;
-}
-.field {
-  gap: 0.4rem;
-}
-.field input {
-  padding: 10px;
-}
-.overlay-div {
-  display: none;
-  position: relative;
-  gap: 1rem;
-  padding: 20px;
-  color: #fac118;
-  background-color: rgb(17, 17, 17);
-}
-.overlay-div button {
-  padding: 10px;
-}
-.overlay-div header {
-  top: 6px;
-  right: 20px;
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin: 0;
-  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
 }
 
 select,
@@ -66,48 +29,63 @@ input,
 button {
   border: none;
   outline: none;
+  font: inherit;
 }
-select,
-option,
-button {
+
+button,
+select {
   cursor: pointer;
 }
 
 input {
-  color: #fac118;
-  background-color: rgb(10, 10, 10);
+  padding: 10px;
+  color: var(--fg-input);
+  background-color: var(--bg-input);
 }
 
 select {
   padding: 8px;
-  background-color: rgb(10, 10, 10);
-  color: #fac118;
+  color: var(--fg-select);
+  background-color: var(--bg-select);
 }
 
 button {
-  color: #fac118;
-  background-color: rgb(10, 10, 10);
+  padding: 10px;
+  color: var(--fg-button);
+  background-color: var(--bg-button);
 }
+
 button i {
-  color: #fac118 !important;
+  color: var(--fg-button);
 }
-select:hover,
-button:hover {
-  outline: 1px solid #fac118;
+
+nav select:hover,
+nav button:hover {
+  outline: 1px solid var(--nav-hover-outline);
 }
+
+nav select,
+nav button {
+  color: var(--fg-nav-buttons);
+}
+
+button:has(i) {
+  aspect-ratio: 1;
+  padding: 0;
+}
+
 nav {
-  width: 100%;
-  background-color: rgb(27, 27, 27);
-  height: 50px;
   display: flex;
-  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  background-color: var(--bg-nav);
+  border-bottom: 1px solid var(--border);
 }
 
 nav h1 {
   display: flex;
   align-items: center;
-  color: #fac118;
-  margin: 0;
+  color: var(--fg-nav-title);
   font-size: 20px;
 }
 
@@ -124,55 +102,88 @@ nav h1 {
 .nav-panel.right {
   margin-left: auto;
   gap: 0.3rem;
-  justify-content: end;
-}
-
-button:has(i) {
-  aspect-ratio: 1;
-  border: none;
+  justify-content: flex-end;
 }
 
 #container {
+  display: flex;
   width: 100%;
   height: calc(100vh - 50px);
-  display: flex;
   overflow: hidden;
 }
 
 #container.horizontal {
   flex-direction: column;
 }
+
 #container.vertical {
   flex-direction: row;
 }
 
 #editor-panel {
-  user-select: none;
   display: flex;
-  background-color: rgb(10, 10, 10);
   overflow: hidden;
+  user-select: none;
+  background-color: var(--bg-editor);
 }
 
 #editor-panel.horizontal {
   flex-direction: row;
 }
+
 #editor-panel.vertical {
   flex-direction: column;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--bg-editor);
+}
+
+.editor:last-child {
+  border-right: none;
+}
+
+.editor-nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  width: 100%;
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  color: var(--editor-header-fg);
+  background-color: var(--bg-editor-header);
+}
+
+.editor-name {
+  color: var(--editor-name-fg);
+}
+
+.editor-icon {
+  font-size: 16px;
+  color: var(--editor-icon-color);
 }
 
 #output {
   width: 100%;
   border: none;
-  background-color: white;
   overflow: hidden;
+  background-color: var(--bg-output);
 }
 
 .gutter {
-  background-color: #1e1e1e;
+  background-color: var(--bg-gutter);
+  transition: background-color 100ms ease;
 }
 
 .gutter:hover {
-  background-color: #444;
+  background-color: var(--bg-gutter-hover);
 }
 
 .gutter.vertical {
@@ -185,50 +196,43 @@ button:has(i) {
   cursor: row-resize;
 }
 
-.editor {
+#overlay {
+  position: fixed;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+  backdrop-filter: var(--overlay-blur);
+}
+
+.overlay-div,
+.overlay-div .field {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border-right: 1px solid rgb(20, 20, 20);
-  min-width: 0;
-  min-height: 0;
 }
 
-.editor:last-child {
-  border-right: none;
+.overlay-div {
+  position: relative;
+  display: none;
+  gap: 1rem;
+  padding: 20px;
+  color: var(--modal-fg);
+  background-color: var(--modal-bg);
+  box-shadow: var(--shadow-popup);
 }
 
-.editor-nav {
-  background-color: rgb(10, 10, 10);
-  width: 100%;
-  height: 28px;
+.overlay-div header {
+  position: absolute;
+  top: 6px;
+  right: 20px;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  font-size: 12px;
-  color: #bcb9b2;
-  flex-shrink: 0;
-}
-
-.editor-name {
-  color: #fac118;
-}
-
-.editor-icon {
-  font-size: 16px;
-  color: #3a3835;
-}
-
-.CodeMirror {
+  justify-content: flex-end;
   width: 100%;
-  height: 100% !important;
-  min-width: 0;
-  min-height: 0;
-  font-size: 14px;
 }
 
-.CodeMirror-scroll {
-  min-width: 0;
-  min-height: 0;
+.field {
+  gap: 0.4rem;
 }

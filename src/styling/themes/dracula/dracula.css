@@ -1,0 +1,93 @@
+:root {
+  --bg-main: #282a36;
+  --bg-secondary: #2d2f3f;
+  --bg-overlay: #44475a;
+  --bg-editor: #282a36;
+  --bg-editor-header: #282a36;
+  --bg-output: #ffffff;
+
+  --bg-nav: #2d2f3f;
+  --fg-nav-title: #f8f8f2;
+  --fg-nav-buttons: #f8f8f2;
+  --nav-hover-outline: #f8f8f2;
+
+  --bg-input: #282a36;
+  --bg-button: #282a36;
+  --bg-select: #282a36;
+
+  --fg-input: #f8f8f2;
+  --fg-button: #f8f8f2;
+  --fg-select: #f8f8f2;
+
+  --editor-border: #44475a;
+  --editor-header-fg: #8be9fd;
+  --editor-name-fg: #f8f8f2;
+  --editor-icon-color: #ff79c6;
+
+  --bg-gutter: #282a36;
+  --bg-gutter-hover: #44475a;
+  --fg-line-number: #6272a4;
+  --gutter-border: #44475a;
+
+  --text-primary: #f8f8f2;
+  --text-secondary: #8be9fd;
+  --text-muted: rgb(144, 145, 148);
+
+  --caret-color: #f8f8f0;
+  --selection-bg: rgba(255, 121, 198, 0.18);
+  --active-line-bg: #313445;
+  --matching-bracket-color: #ff79c6;
+
+  --syntax-comment: #6272a4;
+  --syntax-comment-def: #7d8bb3;
+
+  --syntax-keyword: #ff79c6;
+  --syntax-string: #f1fa8c;
+  --syntax-string-2: #ff79c6;
+
+  --syntax-number: #bd93f9;
+  --syntax-atom: #bd93f9;
+
+  --syntax-type: #8be9fd;
+  --syntax-tag: #ff79c6;
+  --syntax-attribute: #50fa7b;
+  --syntax-builtin: #8be9fd;
+  --syntax-meta: #8be9fd;
+
+  --syntax-variable: #f8f8f2;
+  --syntax-variable-2: #f8f8f2;
+  --syntax-variable-3: #8be9fd;
+
+  --syntax-property: #50fa7b;
+  --syntax-operator: #ff79c6;
+
+  --syntax-def: #50fa7b;
+  --syntax-bracket: #f8f8f2;
+  --syntax-punctuation: #a4a8c7;
+
+  --syntax-error: #ff5555;
+
+  --hint-bg: #2d2f3f;
+  --hint-border: #44475a;
+  --hint-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  --hint-item-bg: #2d2f3f;
+  --hint-item-fg: #f8f8f2;
+  --hint-item-hover-bg: #3a3d4d;
+
+  --hint-active-bg: #44475a;
+  --hint-active-fg: #ff79c6;
+  --hint-active-border: #ff79c6;
+
+  --scrollbar-track: #282a36;
+  --scrollbar-thumb: #44475a;
+  --scrollbar-thumb-hover: #6272a4;
+
+  --overlay-bg: rgba(40, 42, 54, 0.35);
+  --overlay-blur: blur(1px);
+
+  --modal-bg: #44475a;
+  --modal-fg: #f8f8f2;
+
+  --shadow-popup: 0 10px 30px rgba(0, 0, 0, 0.4);
+}

@@ -1,11 +1,11 @@
-const themes = ["vdb-theme", "dracula", "tomorrow"];
+const themes = ["vdb-theme", "dracula", "frosted-flowers", "vscode"];
 
 const head = document.head;
 
-const themeLink = document.createElement("link");
-themeLink.rel = "stylesheet";
-themeLink.id = "theme-link";
-head.appendChild(themeLink);
+const themeLinkPage = document.createElement("link");
+themeLinkPage.rel = "stylesheet";
+themeLinkPage.id = "theme-link-page";
+head.appendChild(themeLinkPage);
 
 const themeDropdown = document.getElementById("theme-dropdown");
 
@@ -28,3 +28,21 @@ window.addEventListener("beforeunload", (event) => {
     themes.indexOf(themeDropdown.value.toLowerCase()),
   );
 });
+
+function SetTheme(theme) {
+  themeLinkPage.href = `./src/styling/themes/${theme}/${theme}.css`;
+}
+
+// function SetEditorTheme(theme) {
+//   currentTheme = theme;
+
+//   themeLinkCodeMirror.href = `./src/styling/themes/${theme}/${theme}-codemirror.css`;
+
+//   htmlEditor.setOption("theme", theme);
+//   cssEditor.setOption("theme", theme);
+//   jsEditor.setOption("theme", theme);
+// }
+
+// function SetPageTheme(theme) {
+//   themeLinkPage.href = `./src/styling/themes/${theme}/${theme}-page.css`;
+// }

@@ -1,11 +1,9 @@
-let currentTheme = "vdb-theme";
 const fileNameInput = document.getElementById("file-name");
 const saveMenu = document.getElementById("save-menu");
 
 const uploadBtn = document.getElementById("file-upload-btn");
 const uploadInput = document.getElementById("file-upload");
 
-// -------------------- HTML EDITOR --------------------
 const htmlEditor = CodeMirror.fromTextArea(
   document.getElementById("editor-html"),
   {
@@ -14,7 +12,7 @@ const htmlEditor = CodeMirror.fromTextArea(
     autoCloseTags: true,
     autoCloseBrackets: true,
     matchBrackets: true,
-    theme: currentTheme,
+    theme: "theme",
 
     lint: true,
     gutters: ["CodeMirror-lint-markers"],
@@ -26,7 +24,6 @@ const htmlEditor = CodeMirror.fromTextArea(
   },
 );
 
-// -------------------- CSS EDITOR --------------------
 const cssEditor = CodeMirror.fromTextArea(
   document.getElementById("editor-css"),
   {
@@ -34,7 +31,7 @@ const cssEditor = CodeMirror.fromTextArea(
     lineNumbers: true,
     autoCloseBrackets: true,
     matchBrackets: true,
-    theme: currentTheme,
+    theme: "theme",
 
     lint: true,
     gutters: ["CodeMirror-lint-markers"],
@@ -46,13 +43,12 @@ const cssEditor = CodeMirror.fromTextArea(
   },
 );
 
-// -------------------- JS EDITOR --------------------
 const jsEditor = CodeMirror.fromTextArea(document.getElementById("editor-js"), {
   mode: "javascript",
   lineNumbers: true,
   autoCloseBrackets: true,
   matchBrackets: true,
-  theme: currentTheme,
+  theme: "theme",
 
   lint: true,
   gutters: ["CodeMirror-lint-markers"],
@@ -63,7 +59,6 @@ const jsEditor = CodeMirror.fromTextArea(document.getElementById("editor-js"), {
   },
 });
 
-// -------------------- AUTOCOMPLETE --------------------
 htmlEditor.on("inputRead", function (cm) {
   if (cm.state.completionActive) return;
   CodeMirror.commands.autocomplete(cm, null, {
@@ -85,18 +80,15 @@ jsEditor.on("inputRead", function (cm) {
   });
 });
 
-// -------------------- CHANGE EVENTS --------------------
 htmlEditor.on("change", ResetTimer);
 cssEditor.on("change", ResetTimer);
 jsEditor.on("change", ResetTimer);
 
-// -------------------- SAVE MENU --------------------
 function OpenSaveMenu() {
   saveMenu.style.display = "flex";
   EnableOverlay(true);
 }
 
-// -------------------- DOWNLOAD PROJECT --------------------
 async function DownloadProject() {
   const html = htmlEditor.getValue();
   const css = cssEditor.getValue();
@@ -136,7 +128,6 @@ ${js}
   saveMenu.style.display = "none";
 }
 
-// -------------------- UPLOAD FILE --------------------
 uploadBtn.addEventListener("click", () => {
   uploadInput.click();
 });
@@ -176,7 +167,6 @@ uploadInput.addEventListener("change", function (event) {
   uploadInput.value = "";
 });
 
-// -------------------- LOCAL STORAGE --------------------
 GetFromLocalStorage();
 
 function GetFromLocalStorage() {
@@ -191,20 +181,8 @@ function SaveToLocalStorage() {
   localStorage.setItem("jsCode", jsEditor.getValue());
 }
 
-// -------------------- WIPE PROJECT --------------------
 function WipeProject() {
   htmlEditor.setValue("");
   cssEditor.setValue("");
   jsEditor.setValue("");
-}
-
-//--------------------- Theme --------------------------
-function SetTheme(theme) {
-  currentTheme = theme;
-
-  themeLink.href = `./src/styling/themes/${theme}.css`;
-
-  htmlEditor.setOption("theme", theme);
-  cssEditor.setOption("theme", theme);
-  jsEditor.setOption("theme", theme);
 }
