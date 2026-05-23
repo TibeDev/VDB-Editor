@@ -86,7 +86,6 @@ jsEditor.on("change", ResetTimer);
 
 function OpenSaveMenu() {
   saveMenu.style.display = "flex";
-  EnableOverlay(true);
 }
 
 async function DownloadProject() {

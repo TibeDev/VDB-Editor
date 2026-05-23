@@ -8,5 +8,6 @@ function Prompt(question, acceptFunc) {
   questionText.textContent = question;
   acceptBtn.addEventListener("click", () => {
     acceptFunc();
+    EnableOverlay(false);
   });
 }

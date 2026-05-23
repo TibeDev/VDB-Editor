@@ -11,7 +11,7 @@ closeBtns.forEach((btn) => {
 function EnableOverlay(enable, overlayDiv) {
   const displayStyle = enable ? "flex" : "none";
   overlay.style.display = displayStyle;
-  overlayDiv.style.display = displayStyle;
+  if (overlayDiv) overlayDiv.style.display = displayStyle;
 }
 
 function OpenOverlayDiv(id) {

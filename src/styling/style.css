@@ -59,8 +59,8 @@ button i {
   color: var(--fg-button);
 }
 
-nav select:hover,
-nav button:hover {
+select:hover,
+button:hover {
   outline: 1px solid var(--nav-hover-outline);
 }
 

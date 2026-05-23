@@ -33,17 +33,11 @@ VDB-Editor is a frontend playground where you can write HTML,CSS and JS side by 
 
 ### Planned Features
 
+Big maybe's:
+
 - Local image storage system
 - Multi-page projects
 - Theme maker
-
----
-
-# `</Known-Bugs>`
-
-### Navigation Bug
-
-Clicking hyperlinks inside the preview and then using the browser back button can sometimes break the editor state.
 
 ---
 
